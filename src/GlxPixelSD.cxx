@@ -93,7 +93,9 @@ G4bool GlxPixelSD::ProcessHits(G4Step* step, G4TouchableHistory* hist){
 	
   Double_t pathId = 0;
   Int_t refl=-1, barId(-1);
-  if(GlxManager::Instance()->GetRunType()==3) {barId = GlxManager::Instance()->GetRadiator();} // if laser run
+  if(GlxManager::Instance()->GetRunType()==3) {
+	  barId = GlxManager::Instance()->GetRadiator();
+  } // if laser run
   for (G4int i=0;i<prizmCol->entries();i++){
     GlxPrizmHit* phit = (*prizmCol)[i];
     if(i==0 && GlxManager::Instance()->GetRunType()!=3){	

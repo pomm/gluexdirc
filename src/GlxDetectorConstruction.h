@@ -40,6 +40,7 @@ private:
   G4LogicalVolume* lTankBox;
   G4LogicalVolume* lBar;
 	G4LogicalVolume* lGlue;
+	G4LogicalVolume* lAirBox;
   G4LogicalVolume* lMirror;
   G4LogicalVolume* lLens1;
   G4LogicalVolume* lLens2;
