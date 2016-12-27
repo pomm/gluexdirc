@@ -4,8 +4,8 @@
 #include "glxtools.C"
 
 //void drawScan(TString infile="../../../data/pions_SLAC_t4_phi40_x0_lam.root"){
-//void drawScan(TString infile="../build/hits.root"){
-void drawScan(TString infile="pions_SLAC_traj_small.root"){
+void drawScan(TString infile="../build/N100_perp_pions_circMir.root"){
+//void drawScan(TString infile="pions_SLAC_traj_small.root"){
   if(infile=="") return;
   fSavePath = "";
   GlxInit(infile,1); //digi

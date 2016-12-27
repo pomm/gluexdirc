@@ -66,7 +66,7 @@ void GlxPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent){
     vec.setPhi(2*M_PI*G4UniformRand());
     vec.rotateY(M_PI/2.);
     fParticleGun->SetParticleMomentumDirection(vec);
-	fParticleGun->SetParticlePosition(G4ThreeVector(radiatorL/2.-0.1,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,0));
+	fParticleGun->SetParticlePosition(G4ThreeVector(radiatorL/2.-0.01-91./2.,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,0));
   }
   if(GlxManager::Instance()->GetRunType() == 3){ // laser calibration
     G4int radid = 47-GlxManager::Instance()->GetRadiator();
@@ -91,11 +91,11 @@ void GlxPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent){
 	//  vec.rotateY(M_PI/10.);
 	 
     //added to compare with John:
-	vec.rotateY(4./180.*3.1415);// John's theta
-	vec.rotateZ(40./180.*3.1415);// John's phi
+	//vec.rotateY(4./180.*3.1415);// John's theta
+	//vec.rotateZ(40./180.*3.1415);// John's phi
 	
     fParticleGun->SetParticleMomentumDirection(vec);
-    //fParticleGun->SetParticlePosition(G4ThreeVector(0,0,4000));//5600));// changed the sign according to mechanical design
+    //fParticleGun->SetParticlePosition(G4ThreeVector(0,0,5300));//5600));// changed the sign according to mechanical design
 	fParticleGun->SetParticlePosition(G4ThreeVector(-140.,175.,8.7)); // John's location  
 	//fParticleGun->SetParticlePosition(G4ThreeVector(1000.,175.,-8.7));   
   }
@@ -105,7 +105,7 @@ void GlxPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent){
 
     Double_t xpos = -50 + 1220*2*(1-2*G4UniformRand()); // [-2490,2390]
     Double_t ypos = 5 + (365 - 420/2.) + 420*2*G4UniformRand(); //[160,1000]
-    Double_t vertex = 4000;//5600;
+    Double_t vertex = 5300;
 
     if(GlxManager::Instance()->GetBeamDimension() == -2){
       xpos = GlxManager::Instance()->GetBeamX();

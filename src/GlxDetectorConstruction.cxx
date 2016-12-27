@@ -43,6 +43,8 @@ GlxDetectorConstruction::GlxDetectorConstruction()
   fNsil = 1.406;
   fNgr = 1.46;
   fNej560 = 1.43;
+
+  fGlTh = 0.05; // [mm] = 50 um
  
   fNRow = 5;
   fNCol = 35;
@@ -120,6 +122,9 @@ G4VPhysicalVolume* GlxDetectorConstruction::Construct(){
   // The Bar
   G4Box* gBar = new G4Box("gBar",fBar[0]/2.,fBar[1]/2.,fBar[2]/2.);
   lBar = new G4LogicalVolume(gBar,BarMaterial,"lBar",0,0,0);
+  // The glue between sub-bars
+  G4Box* gGlue = new G4Box("gGlue",fBar[0]/2.,fBar[1]/2.,fGlTh/2.);
+  lGlue = new G4LogicalVolume(gGlue,epotekMaterial,"lGlue",0,0,0);
   // The Mirror
   G4Box* gMirror = new G4Box("gMirror",fMirror[0]/2.,fMirror[1]/2.,fMirror[2]/2.);
   lMirror = new G4LogicalVolume(gMirror,MirrorMaterial,"lMirror",0,0,0);
@@ -192,6 +197,15 @@ G4VPhysicalVolume* GlxDetectorConstruction::Construct(){
   // The FS wall of the EV
   G4Box* gWall = new G4Box("gWall",fFdp[0]/2.,fFdp[1]/2.,fWall/2.);
   lWall = new G4LogicalVolume(gWall,BarMaterial,"lWall",0,0,0);
+
+	//place glue inside the bar:
+	for(Int_t i=-1; i<3; i++){
+		G4double zshift = -1225. + 1225.*i;
+		if(i == -1){
+			zshift = -1225. + 1225.*i + 0.5*fGlTh;
+		}
+		new G4PVPlacement(0,G4ThreeVector(0,0,zshift),lGlue,"wGlue",lBar,false,i);
+	}
 
   for(Int_t i=0; i<12; i++){
     G4double yshift = (fBar[1]+0.15)*i - fBarBox[1]/2. + fBar[1]/2.;

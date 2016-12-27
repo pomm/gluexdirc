@@ -39,6 +39,7 @@ private:
   G4LogicalVolume* lBarBox;
   G4LogicalVolume* lTankBox;
   G4LogicalVolume* lBar;
+	G4LogicalVolume* lGlue;
   G4LogicalVolume* lMirror;
   G4LogicalVolume* lLens1;
   G4LogicalVolume* lLens2;
@@ -85,6 +86,7 @@ private:
   G4double fNsil;
   G4double fNgr;
   G4double fNej560;
+	G4double fGlTh;
   G4double fHall[3];
   G4double fBar[3];
   G4double fBarBox[3];
