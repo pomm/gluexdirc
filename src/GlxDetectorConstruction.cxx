@@ -207,9 +207,9 @@ G4VPhysicalVolume* GlxDetectorConstruction::Construct(){
 		if(i == -1){
 			zshift = -1225. + 1225.*i + 0.5*fGlTh;
 		}
-		if(i != 2){
+		if(i != -1){
 			new G4PVPlacement(0,G4ThreeVector(0,0,zshift),lGlue,"wGlue",lBar,false,i);
-		}else if(i == 2){
+		}else if(i == -1){
 			new G4PVPlacement(0,G4ThreeVector(0,0,zshift),lAirBox,"wAirBox",lBar,false,i);
 		}
 	}

@@ -88,20 +88,19 @@ void GlxPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent){
 if(GlxManager::Instance()->GetRunType() == 3){ // light test
     G4int radid = 47-GlxManager::Instance()->GetRadiator();
 	G4int arr[]={-795,-365,365,795};
-    G4double anglePhi = -G4UniformRand()*M_PI*2.;
-    G4double AngSigma = 2./360.*2.*M_PI; //degrees
+    G4double AngSigma = 2./180.*M_PI; //degrees
 	G4ThreeVector vec(0,0,1);
 	vec.rotateX(AngSigma*sqrt(-2.*log(G4UniformRand())));
 	vec.rotateZ(2.*M_PI*G4UniformRand());
     //vec.rotateY((90.+42.13)/180.*3.1415);
-	  vec.rotateY(270.*deg);
+	  vec.rotateY(313.*deg);
 	//  vec.rotateZ(5./180.*3.1415);
     fParticleGun->SetParticleMomentumDirection(vec);
 	 //this position is in the middle of the op box:
 	//  fParticleGun->SetParticlePosition(G4ThreeVector(2650.,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,0.));
 	//this position is at the bar end:
 	 // std::cout<<"position of the light test = "<<radiatorL/2.+70.<<std::endl;
-	fParticleGun->SetParticlePosition(G4ThreeVector(radiatorL/2.+70.,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,0.));
+	fParticleGun->SetParticlePosition(G4ThreeVector(radiatorL/2.+70.,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,-60.));
 	//fParticleGun->SetParticlePosition(G4ThreeVector(radiatorL/2.+200.,arr[radid/12]+0.5*425-0.5*35-(11-radid%12)*35,-502.));  
   }
 	
